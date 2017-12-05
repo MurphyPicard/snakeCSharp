@@ -62,5 +62,31 @@ namespace snakeCSharp
 
         }
 
+        private void UpdateScreen(object sender, EventArgs e)
+        {
+            // Check for Game Over
+            if (Settings.GameOver == true)
+            {
+                // Check if Enter is pressed
+                if (Input.KeyPressed(Keys.Enter))
+                {
+                    StartGame();
+                }
+                else
+                {
+                    if (Input.KeyPressed(Keys.Right) && Settings.direction != Direction.Left)
+                        Settings.direction = Direction.Right;
+                    if (Input.KeyPressed(Keys.Left) && Settings.direction != Direction.Right)
+                        Settings.direction = Direction.Left;
+                    if (Input.KeyPressed(Keys.Down) && Settings.direction != Direction.Up)
+                        Settings.direction = Direction.Down;
+                    if (Input.KeyPressed(Keys.Up) && Settings.direction != Direction.Down)
+                        Settings.direction = Direction.Up;
+
+                }
+
+            }
+        }
+
     }
 }

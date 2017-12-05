@@ -30,5 +30,37 @@ namespace snakeCSharp
             // Start new game
             StartGame();
         }
+
+        private void StartGame()
+        {
+            // Set settings to default
+            new Settings();
+
+            // Create new player object
+            Snake.Clear();
+            Circle head = new Circle();
+            head.X = 10;
+            head.Y = 5;
+            Snake.Add(head);
+
+            lblScore.Text = Settings.Score.ToString();
+            GenerateFood();
+
+        }
+
+        // Place a random food pellet
+        private void GenerateFood()
+        {
+            int maxXPos = pbCanvas.Size.Width / Settings.Width;
+            int maxYPos = pbCanvas.Size.Height / Settings.Height;
+
+            Random random = new Random();
+            food = new Circle();
+            food.X = random.Next(0, maxXPos);
+            food.Y = random.Next(0, maxYPos);
+
+
+        }
+
     }
 }

@@ -26,7 +26,7 @@ namespace snakeCSharp
             var settings = new Settings();
 
             // Set game speed and start timer
-            gameTimer.Interval = 1000 / Settings.Speed;
+            gameTimer.Interval = 10000 / Settings.Speed;
             gameTimer.Tick += UpdateScreen;
             gameTimer.Start();
 
@@ -157,11 +157,13 @@ namespace snakeCSharp
                             Snake[i].X--;
                             break;
                         case Direction.Down:
-                            Snake[i].Y--;
-                            break;
-                        case Direction.Up:
                             Snake[i].Y++;
                             break;
+                        case Direction.Up:
+                            Snake[i].Y--;
+                            break;
+                        
+
                     }
                 }
                 else

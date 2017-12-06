@@ -15,7 +15,7 @@ namespace snakeCSharp
     }
 
 
-    internal class Settings
+    class Settings // I deleted internal for a test
     {
         public static int Width { get; set; }
         public static int Height { get; set; }

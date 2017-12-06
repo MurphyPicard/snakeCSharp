@@ -107,7 +107,7 @@ namespace snakeCSharp
         {
             Graphics canvas = e.Graphics;
 
-            if (Settings.GameOver != false)
+            if (Settings.GameOver == false)
             {
                 // Set color of snake
                 Brush snakeColor;

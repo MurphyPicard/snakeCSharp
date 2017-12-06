@@ -33,6 +33,8 @@ namespace snakeCSharp
 
         private void StartGame()
         {
+            lblGameOver.Visible = false;
+
             // Set settings to default
             new Settings();
 
@@ -123,7 +125,41 @@ namespace snakeCSharp
             }
             else
             {
-                string gameOver = "Game over \nYour final score is: " + Settings.Score + "\nPress Enter to play again"
+                string gameOver = "Game over \nYour final score is: " + Settings.Score + "\nPress Enter to play again";
+                lblGameOver.Text = gameOver;
+                lblGameOver.Visible = true;
+            }
+        }
+
+        private void MovePlayer()
+        {
+            for (int i = Snake.Count - 1; i > 0; i--)
+            {
+                // Move Head
+                if (i == 0)
+                {
+                    switch (Settings.direction)
+                    {
+                        case Direction.Right:
+                            Snake[i].X++;
+                            break;
+                        case Direction.Left:
+                            Snake[i].X--;
+                            break;
+                        case Direction.Down:
+                            Snake[i].Y--;
+                            break;
+                        case Direction.Up:
+                            Snake[i].Y++;
+                            break;
+                    }
+                }
+                else
+                {
+                    // Move body
+                    Snake[i].X = Snake[i - 1].X;
+                    Snake[i].Y = Snake[i - 1].Y;
+                }
             }
         }
     }

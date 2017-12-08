@@ -15,6 +15,7 @@ namespace snakeCSharp
         private List<Circle>Snake = new List<Circle>();
         private Circle food = new Circle();
 
+        // making _settings available to all functions
         Settings _settings = new Settings();
 
         public Form1()

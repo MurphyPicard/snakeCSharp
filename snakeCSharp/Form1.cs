@@ -91,6 +91,7 @@ namespace snakeCSharp
             else
             {
                 Console.WriteLine("else");
+                // Breakpoints added above and below this line.
                 if (Input.KeyPressed(Keys.Right) && _settings.direction != Direction.Left)
                     _settings.direction = Direction.Right;
                 else if (Input.KeyPressed(Keys.Left) && _settings.direction != Direction.Right)

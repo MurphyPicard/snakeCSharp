@@ -16,6 +16,7 @@ namespace snakeCSharp
         // Perform a check to see if a particular button is pressed
         public static bool KeyPressed(Keys key)
         {
+            // Need checks here to see if KeyPressed works.
             if (keyTable[key] == null)
             {
                 return false;

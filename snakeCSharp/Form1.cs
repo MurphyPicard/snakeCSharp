@@ -15,6 +15,7 @@ namespace snakeCSharp
         private List<Circle>Snake = new List<Circle>();
         private Circle food = new Circle();
 
+        Settings _settings = new Settings();
 
         public Form1()
         {
@@ -29,9 +30,10 @@ namespace snakeCSharp
             gameTimer.Interval = 10000 / Settings.Speed;
             gameTimer.Tick += UpdateScreen;
             gameTimer.Start();
-
+           
             // Start new game
             StartGame();
+           
         }
 
         private void StartGame()
@@ -77,7 +79,7 @@ namespace snakeCSharp
         private void UpdateScreen(object sender, EventArgs e)
         {
             // Check for Game Over
-            if (Settings.GameOver == true)
+            if (_settings.GameOver == true)
             {
                 // Check if Enter is pressed
                 if (Input.KeyPressed(Keys.Enter))
@@ -87,14 +89,15 @@ namespace snakeCSharp
             }
             else
             {
-                if (Input.KeyPressed(Keys.Right) && Settings.direction != Direction.Left)
-                    Settings.direction = Direction.Right;
-                else if (Input.KeyPressed(Keys.Left) && Settings.direction != Direction.Right)
-                    Settings.direction = Direction.Left;
-                else if (Input.KeyPressed(Keys.Down) && Settings.direction != Direction.Up)
-                    Settings.direction = Direction.Down;
-                else if (Input.KeyPressed(Keys.Up) && Settings.direction != Direction.Down)
-                    Settings.direction = Direction.Up;
+                Console.WriteLine("else");
+                if (Input.KeyPressed(Keys.Right) && _settings.direction != Direction.Left)
+                    _settings.direction = Direction.Right;
+                else if (Input.KeyPressed(Keys.Left) && _settings.direction != Direction.Right)
+                    _settings.direction = Direction.Left;
+                else if (Input.KeyPressed(Keys.Down) && _settings.direction != Direction.Up)
+                    _settings.direction = Direction.Down;
+                else if (Input.KeyPressed(Keys.Up) && _settings.direction != Direction.Down)
+                    _settings.direction = Direction.Up;
 
                 MovePlayer();
             }
@@ -107,7 +110,7 @@ namespace snakeCSharp
         {
             Graphics canvas = e.Graphics;
 
-            if (Settings.GameOver == false)
+            if (_settings.GameOver == false)
             {
                 // Set color of snake
                 Brush snakeColor;
@@ -148,7 +151,7 @@ namespace snakeCSharp
                 // Move Head
                 if (i == 0)
                 {
-                    switch (Settings.direction)
+                    switch (_settings.direction)
                     {
                         case Direction.Right:
                             Snake[i].X++;
